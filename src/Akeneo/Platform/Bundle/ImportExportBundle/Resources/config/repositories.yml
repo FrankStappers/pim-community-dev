@@ -17,3 +17,12 @@ services:
             - '@doctrine.orm.entity_manager'
             - '%akeneo_batch.entity.job_instance.class%'
 
+    pim_import_export.query.get_last_operations:
+        class: 'Akeneo\Platform\Bundle\ImportExportBundle\Query\GetLastOperations'
+        arguments:
+            - '@database_connection'
+            -
+                - 'refresh_project_completeness_calculation'
+                - 'compute_product_models_descendants'
+                - 'compute_family_variant_structure_changes'
+                - 'compute_completeness_of_products_family'
